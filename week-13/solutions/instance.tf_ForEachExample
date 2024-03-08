@@ -1,0 +1,56 @@
+##################################################################################
+# DATA
+##################################################################################
+
+data "aws_ami" "aws-linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023*-x86_64*"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
+##################################################################################
+# RESOURCES
+
+
+variable "ec2tag" {
+  description = "Map of ec2 configuration."
+  type        = map(any)
+
+  default = {
+    server1 = {
+      instance_type           = "t2.micro",
+      server_name             = "server_1"
+    },
+    server2 = {
+      instance_type           = "t2.nano",
+      server_name             = "server_2"
+    }
+  }
+}
+
+
+resource "aws_instance" "Servers" {
+
+  for_each      = var.ec2tag
+  ami                    = data.aws_ami.aws-linux.id
+  instance_type          = each.value.instance_type
+  vpc_security_group_ids = [aws_security_group.allow_ssh_web.id]
+  subnet_id = aws_subnet.Public1.id
+
+  tags = merge(local.common_tags, {Name = each.value.server_name})
+}
+

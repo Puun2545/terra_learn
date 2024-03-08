@@ -98,6 +98,11 @@ resource "aws_route_table" "PublicRoute" {
     }
 }
 
+resource "aws_route_table_association" "public_subnet_association" {
+  subnet_id      = aws_subnet.Public1.id
+  route_table_id = aws_route_table.PublicRoute.id
+}
+
 # Create an EC2 instance -> name: tfTest
 resource "aws_instance" "tfTest" {
   ami                    = data.aws_ami.aws-linux.id
