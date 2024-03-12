@@ -1,0 +1,26 @@
+---
+- name: Install CFSSL
+  hosts: configure-node
+  become: yes
+
+  tasks:
+    - name: Install golang
+      yum:
+        name: golang
+        state: present
+
+    - name: Install CFSSL
+      shell: |
+        go install github.com/cloudflare/cfssl/cmd/cfssl@latest
+        go install github.com/cloudflare/cfssl/cmd/cfssljson@latest
+        cd ~/go/bin
+        chmod +x cfssl cfssljson
+        sudo mv cfssl cfssljson /usr/local/bin/
+      args:
+        executable: /bin/bash
+
+    - name: Validate CFSSL Installation
+      command: cfssl version
+
+    - name: Return to home folder
+      command: cd ~
