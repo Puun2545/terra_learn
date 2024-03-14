@@ -41,7 +41,7 @@ resource "aws_lb_listener" "lbListener" {
 resource "aws_lb_target_group_attachment" "tgattach" {
   count             = 2
   target_group_arn = aws_lb_target_group.tgp.arn
-  target_id         = aws_instance.Server[*].id[count.index]
+  target_id         = aws_instance.Server[count.index].id
   port              = 80
 }
 

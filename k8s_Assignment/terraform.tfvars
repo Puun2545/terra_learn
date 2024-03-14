@@ -1,0 +1,11 @@
+aws_access_key="ASIA5FTZDCR6FDHLIDVD"
+
+aws_secret_key="/XC7xdQ38o2Evoj6Z2k7lVrAHoW6Nai8VLdIdlOa"
+
+aws_session_token="FwoGZXIvYXdzEHkaDPAHHCUcH7qqrT/48SLFAUahtwuH58jGz6VHEOuOmWt6UbVVrjD5m5c2vrJiNxKkpolyu6OMqpOLJosTWkvUhtt5QyhWXkeZ6ECy/ZHONSencFf/BNfcgMBKScUETbsDvfyWgO2AwLnILR8C5xK66jbkeXfRWksdbsBoY8gMBfDJGgdXRAIiughTEsP+jMgve0bMVcS6cN0JynLJs/agsFWHlIh1mpHK3Ju1zv+xBP8soKmDG7mWZe5uE3P6iEnaAWi3snTyXEP+Y/0QJZfhJF1MbcOqKOLDyq8GMi2MEft33xZ19NwB7l0jVUMDaxBaDw3pIHcIst7kKpfTCFaC5yBeIf5BHBI27Lk="
+
+aws_region = "us-east-1"
+
+vpc_cidr_block = "10.0.0.0/16"
+
+subnet_cidr_block = "10.0.1.0/24"
