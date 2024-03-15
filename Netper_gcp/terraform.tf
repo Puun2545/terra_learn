@@ -35,7 +35,7 @@ resource "google_compute_instance" "webserver" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-os/cloud/ubuntu-22.04-lts" 
+      image = "debian-cloud/debian-11" 
     }
   }
 
@@ -56,7 +56,7 @@ resource "google_compute_instance" "loadbalancer" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-os/cloud/ubuntu-22.04-lts"  # Replace with your load testing tool image
+      image = "debian-cloud/debian-11"  # Replace with your load testing tool image
     }
   }
 
