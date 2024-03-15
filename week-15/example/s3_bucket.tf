@@ -15,7 +15,7 @@ module "s3_bucket" {
 }
 
 resource "aws_s3_object" "image" {
-  bucket = module.s3_bucket.name
+  bucket = module.s3_bucket.id
   key    = "testimage.jpg"  
   source = "./images/memes.jpeg" 
 }
