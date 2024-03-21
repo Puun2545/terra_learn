@@ -38,7 +38,7 @@ resource "aws_subnet" "Public" {
   cidr_block              = cidrsubnet(var.network_address_space, 8, count.index+1)
   vpc_id                  = aws_vpc.testVPC.id
   map_public_ip_on_launch = true
-  availability_zone       = data.aws_availability_zones.available.names[count.index]
+  availability_zone       = count==0 ? "us-west-2a" : count==1 ? "us-west-2b" : "us-west-2c"
   tags = merge(local.common_tags, { Name = "${var.cName}-subnet${count.index + 1}" })
 }
 
